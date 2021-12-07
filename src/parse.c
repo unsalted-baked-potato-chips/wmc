@@ -19,13 +19,11 @@ int parse_file(char *filename) {
         }
     }
     char* argv[COMMAND_MAX + 1];
-    char* line[LINE_MAX];
-    int argc = 0;
-    while (fgets(line, LINE_MAX, in)) {
+    char line[LINE_MAX];
+    for (int argc = 0; fgets(line, LINE_MAX, in); argc = 0) {
         if (line[0] == '#') {
             continue;
         }
-        argc = 0;
         argv[argc] = strtok(line, " \n");
         while (argv[argc] != NULL) {
             argv[++argc] = strtok(NULL, " \n");
