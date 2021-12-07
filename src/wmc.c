@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "parse.h"
 #if _POSIX_C_SOURCE >= 2 || _XOPEN_SOURCE
 #include <unistd.h>
