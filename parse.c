@@ -30,7 +30,10 @@ int parse_file(char *filename) {
         while (argv[argc] != NULL) {
             argv[++argc] = strtok(NULL, " \n");
         }
-        parse_line(argc, argv);
+        if (parse_line(argc, argv) < 0) {
+            fprintf(stderr, "Error on line: %s\n", line);
+            return -1;
+        }
     }
     return 0;
 }
