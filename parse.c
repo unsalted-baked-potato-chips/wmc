@@ -22,10 +22,13 @@ int parse_file(char *filename) {
     char* line = malloc(sizeof(char) * LINE_MAX);
     int argc = 0;
     while (fgets(line, LINE_MAX, in)) {
+        if (line[0] == '#') {
+            continue;
+        }
         argc = 0;
-        argv[argc] = strtok(line, " ");
+        argv[argc] = strtok(line, " \n");
         while (argv[argc] != NULL) {
-            argv[++argc] = strtok(NULL, " ");
+            argv[++argc] = strtok(NULL, " \n");
         }
         parse_line(argc, argv);
     }
