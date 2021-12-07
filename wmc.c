@@ -1,8 +1,17 @@
 #include <stdio.h>
+#include "parse.h"
+#if _POSIX_C_SOURCE >= 2 || _XOPEN_SOURCE
+#include <unistd.h>
+#else
+#include "getopt.h"
+#endif
+
+#define ARGS "s:"
 
 int main(int argc, char** argv) {
-    for (int i = 0; i < argc; i++) {
-        printf("%s\n", argv[i]);
+    if (getopt(argc, argv, ARGS) != -1) {
+        return parse_file(optarg);
+    } else {
+        return parse_line(argc - 1, argv + 1);
     }
-    return 0;
 }
