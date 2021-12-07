@@ -19,7 +19,7 @@ int parse_file(char *filename) {
         }
     }
     char* argv[COMMAND_MAX + 1];
-    char* line = malloc(sizeof(char) * LINE_MAX);
+    char* line[LINE_MAX];
     int argc = 0;
     while (fgets(line, LINE_MAX, in)) {
         if (line[0] == '#') {
@@ -32,7 +32,6 @@ int parse_file(char *filename) {
         }
         parse_line(argc, argv);
     }
-    free(line);
     return 0;
 }
 
