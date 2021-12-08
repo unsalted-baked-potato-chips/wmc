@@ -28,12 +28,7 @@ int execute(int argc, const char **argv) {
 int strcmp(const char *a, const char *b) {
     for (int i = 0; a[i] == b[i]; i++) {
         if (a[i] == 0) {
-            if (b[i] == 0) {
                 return 0;
-            }
-            break;
-        } else if (b[i] == 0) {
-            break;
         }
     }
     return 1;
