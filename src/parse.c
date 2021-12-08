@@ -1,11 +1,10 @@
 #include <string.h>
 #include <stdio.h>
-#include <stdlib.h>
+#include "commands.h"
 #include "parse.h"
 
 #define LINE_MAX 100
 #define COMMAND_MAX 10
-#define WORD_MAX LINE_MAX / COMMAND_MAX
 
 int parse_file(char *filename) {
     FILE* in;
@@ -36,11 +35,13 @@ int parse_file(char *filename) {
     return 0;
 }
 
-int parse_line(int argc, char **argv) {
-    printf("command: %s\nargs:", argv[0]);
-    for (int i = 1; i < argc; i++) {
-        printf(" %s", argv[i]);
+int parse_line(int argc, const char **argv) {
+    if (argc == 0) {
+        fprintf(stderr, "No command given\n");
+    } else if (execute(argc, argv) < 0) {
+        fprintf(stderr, "Invalid command: %s\n", argv[0]);
+        return -1;
+    } else {
+       return 0;
     }
-    printf("\n");
-    return 0;
 }

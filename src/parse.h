@@ -2,6 +2,6 @@
 #define WMC_PARSE_H
 
 int parse_file(char *filename);
-int parse_line(int argc, char **argv);
+int parse_line(int argc, const char **argv);
 
 #endif //WMC_PARSE_H

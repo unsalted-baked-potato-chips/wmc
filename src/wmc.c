@@ -7,7 +7,7 @@
 
 #define ARGS "s:"
 
-int main(int argc, char** argv) {
+int main(int argc, const char** argv) {
     if (getopt(argc, argv, ARGS) != -1) {
         return parse_file(optarg);
     } else {
