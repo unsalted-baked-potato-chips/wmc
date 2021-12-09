@@ -3,10 +3,10 @@
 
 typedef struct cmd {
     const char *name;
-    int (*func)(int, const char restrict **);
+    int (*func)(const int, const char restrict **);
 } CMD;
 
-int help(int argc, const char ** restrict argv);
+int help(const int argc, const char ** restrict argv);
 
 int strcmp(const char *a, const char *b);
 
@@ -33,7 +33,7 @@ int strcmp(const char *a, const char *b) {
     return 1;
 }
 
-int help(int argc, const char ** restrict argv) {
+int help(const int argc, const char ** restrict argv) {
     printf("You asked for help with:");
     for (int i = 0; i < argc; i++) {
         printf(" %s", argv[0]);
