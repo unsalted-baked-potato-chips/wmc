@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include "commands.h"
 
-#define COMMAND_COUNT 1
-
 struct cmd {
     const char *name;
     int (*func)(int, const char**);
@@ -12,12 +10,13 @@ int help(int argc, const char **argv);
 
 int strcmp(const char *a, const char *b);
 
-static struct cmd commands[COMMAND_COUNT] = {
+static struct cmd commands[] = {
         {"help", help},
+        {NULL,NULL}
 };
 
 int execute(int argc, const char **argv) {
-    for (int i = 0; i < COMMAND_COUNT; i++) {
+    for (int i = 0; commands[i].name != NULL; i++) {
         if (!strcmp(argv[0], commands[i].name)) {
             return commands[i].func(argc, argv);
         }
