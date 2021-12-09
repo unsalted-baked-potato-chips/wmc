@@ -1,6 +1,7 @@
 #include <stdio.h>
+#include "define.h"
 
 int version(int argc, const char **argv) {
-    printf("wmc - version 0.0.1-alpha\n");
+    puts("wmc - version "WMC_VERSION);
     return 0;
 }
