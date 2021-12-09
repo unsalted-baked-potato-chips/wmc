@@ -1,16 +1,16 @@
 #include <stdio.h>
 #include "commands.h"
 
-struct cmd {
+typedef struct cmd {
     const char *name;
     int (*func)(int, const char**);
-};
+} CMD;
 
 int help(int argc, const char **argv);
 
 int strcmp(const char *a, const char *b);
 
-static struct cmd commands[] = {
+static const CMD commands[] = {
         {"help", help},
         {NULL,NULL}
 };
