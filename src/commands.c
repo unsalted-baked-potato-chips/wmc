@@ -12,11 +12,11 @@ int strcmp(const char *a, const char *b);
 
 static const CMD commands[] = {
         {"help", help},
-        {NULL,NULL}
+        {NULL}
 };
 
 int execute(int argc, const char **argv) {
-    for (int i = 0; commands[i].name != NULL; i++) {
+    for (int i = 0; commands[i]; i++) {
         if (!strcmp(argv[0], commands[i].name)) {
             return commands[i].func(argc, argv);
         }
