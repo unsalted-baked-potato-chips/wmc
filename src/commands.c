@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "commands.h"
-
-#define COMMAND_COUNT 2
+#include "define.h"
 
 struct cmd {
     const char *name;
